@@ -1,0 +1,84 @@
+<div class="col-md-2 p-0 bg-dark collapse d-md-block text-white" id="sidebarmenu" style="height: 100vh;">
+  <nav class="nav flex-column text-white p-2">
+    <a href="/allproducts" class="nav-link text-white">Products</a>
+    <a href="/registeredusers" class="nav-link text-white">Registered Users</a>
+    <a href="/orders/viewallorders" class="nav-link text-white">View All Orders</a>
+    <a href="#" class="nav-link text-white" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
+  Change Password
+</a>
+
+  </nav>
+  <div class="p-2">
+    <a href="/adminlogin" class="btn btn-warning w-100">Logout</a>
+  </div>
+</div>
+
+
+<!-- Change Password Modal -->
+<div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form id="changePasswordForm" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Change Password</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">Current Password</label>
+          <input type="password" class="form-control" id="currentPassword" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">New Password</label>
+          <input type="password" class="form-control" id="newPassword" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Confirm New Password</label>
+          <input type="password" class="form-control" id="confirmPassword" required>
+        </div>
+        <div id="changePasswordMessage" class="text-danger small"></div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-dark">Change Password</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+document.getElementById("changePasswordForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const currentPassword = document.getElementById("currentPassword").value;
+  const newPassword = document.getElementById("newPassword").value;
+  const confirmPassword = document.getElementById("confirmPassword").value;
+  const messageBox = document.getElementById("changePasswordMessage");
+
+  if (newPassword !== confirmPassword) {
+    messageBox.textContent = "New passwords do not match!";
+    return;
+  }
+
+  try {
+    const res = await fetch("/admin/update-password", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ currentPassword, newPassword }),
+    });
+
+    const data = await res.json();
+    if (!res.ok) {
+      messageBox.textContent = data.message || "Failed to update password.";
+    } else {
+      messageBox.classList.remove("text-danger");
+      messageBox.classList.add("text-success");
+      messageBox.textContent = "✅ Password changed successfully!";
+      setTimeout(() => window.location.reload(), 1500);
+    }
+  } catch (err) {
+    messageBox.textContent = "Something went wrong.";
+  }
+});
+</script>
+

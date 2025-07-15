@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .login-container {
+      width: 1000px;
+      height: 650px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      display: flex;
+    }
+
+    #formcurve {
+      border-radius: 0;
+      background: linear-gradient(to top, #F5CA5F, #EDEA85);
+      animation: slideIn 0.8s ease-out forwards;
+      transform: translateX(100%);
+      opacity: 0;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .animate-logo {
+      animation: fadeIn 1.2s ease-in-out;
+      animation-delay: 0.6s;
+      animation-fill-mode: both;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.7);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body class="d-flex justify-content-center align-items-center min-vh-100">
+  
+  <div class="login-container">
+    <%- body %>
+  </div>
+
+  <script src="/javascripts/bootstrap.bundle.min.js"></script>
+</body>
+</html>

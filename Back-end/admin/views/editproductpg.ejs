@@ -1,0 +1,86 @@
+<div class="container mt-2">
+  <h3 class="mb-2">Edit Product</h3>
+
+  <% if (status === 'success') { %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+       Product updated successfully!
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% } else if (status === 'error') { %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+       Failed to update product. Please try again.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% } %>
+
+  <div class="border rounded shadow-sm p-4 bg-white">
+    <form action="/products/edit/<%= product._id %>" method="POST" enctype="multipart/form-data">
+      <div class="row g-3">
+        <div class="col-md-4">
+          <label class="form-label">Title</label>
+          <input type="text" name="title" value="<%= product.title %>" class="form-control" required>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Price</label>
+          <input type="text" name="price" value="<%= product.price %>" class="form-control" required>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Brand</label>
+          <input type="text" name="brand" value="<%= product.brand %>" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="row g-3 mt-2">
+        <div class="col-md-4">
+          <label class="form-label">Category</label>
+          <input type="text" name="category" value="<%= product.category %>" class="form-control" required>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Gender</label>
+          <select name="gender" class="form-select" required>
+            <option value="">Select Gender</option>
+            <option value="men" <%= product.gender === 'men' ? 'selected' : '' %>>Men</option>
+            <option value="women" <%= product.gender === 'women' ? 'selected' : '' %>>Women</option>
+            <option value="kids" <%= product.gender === 'kids' ? 'selected' : '' %>>Kids</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Material</label>
+          <input type="text" name="material" value="<%= product.material %>" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="row g-3 mt-2">
+        <div class="col-md-12">
+          <label class="form-label">Description</label>
+          <textarea name="description" class="form-control" rows="5" required><%= product.description %></textarea>
+        </div>
+      </div>
+
+      <div class="row g-3 mt-2 align-items-center">
+        <div class="col-md-6">
+          <label class="form-label">Current Image</label><br />
+          <img src="data:image/jpeg;base64,<%= product.image %>" width="100" height="100" class="rounded shadow-sm" />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Change Image</label>
+          <input type="file" name="image" class="form-control" accept="image/*">
+        </div>
+      </div>
+
+      <div class="form-check form-switch mt-3">
+        <input class="form-check-input" type="checkbox" id="activeSwitch" name="active" <%= product.active ? 'checked' : '' %>>
+        <label class="form-check-label" for="activeSwitch">Enabled</label>
+      </div>
+
+      <div class="row g-3 mt-4">
+        <div class="col-md-6">
+          <button type="submit" class="btn btn-success w-100">Update Product</button>
+        </div>
+        <div class="col-md-6">
+          <a href="/allproducts" class="btn btn-danger w-100">Cancel</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

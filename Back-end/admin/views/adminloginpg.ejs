@@ -1,0 +1,30 @@
+<div class="col-6 p-0">
+  <img src="/images/4059670.jpg" class="img-fluid w-100 h-100" style="object-fit: cover;" alt="Login Image">
+</div>
+
+<div id="formcurve" class="col-6 p-4 d-flex flex-column justify-content-center position-relative">
+  <img src="/images/Logo.png" class="animate-logo position-absolute start-0 top-0 p-3" width="100" height="100" />
+
+  <h1 class="text-center fw-bold">Admin Panel</h1>
+  <p class="text-center">Enter your email address and password to access admin panel</p>
+
+  <!--  Display login error if exists -->
+  <% if (typeof error !== 'undefined' && error) { %>
+    <div class="alert alert-danger text-center py-2">
+      <%= error %>
+    </div>
+  <% } %>
+
+  <form method="post" action="/adminlogin">
+    <div class="mb-3">
+      <input type="email" class="form-control form-control-lg bg-light text-muted" placeholder="Enter Email" name="email" required />
+    </div>
+    <div class="mb-3">
+      <input type="password" class="form-control form-control-lg bg-light text-muted" placeholder="Enter Password" name="password" required />
+    </div>
+    <button type="submit" class="btn btn-dark text-light btn-lg w-100 fw-bold">Login</button>
+    <div class="text-center mt-3">
+      <a href="#" class="text-decoration-none text-dark">Forgot Password?</a>
+    </div>
+  </form>
+</div>

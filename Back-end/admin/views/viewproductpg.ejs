@@ -1,0 +1,33 @@
+<div class="container mt-4">
+  <h3 class="mb-4">View Product Details</h3>
+
+  <div class="row">
+    <!-- Left: Product Image -->
+    <div class="col-md-5 text-center">
+      <img src="data:image/jpeg;base64,<%= product.image %>" class="img-fluid rounded shadow" alt="Product Image" style="max-height: 350px;" />
+    </div>
+
+    <!-- Right: Product Details -->
+    <div class="col-md-7">
+      <h4 class="mb-3">
+        <%= product.title %>
+         <% if (product.active) { %>
+            <span class="badge bg-success ms-2">Enabled</span>
+        <% } else { %>
+            <span class="badge bg-danger ms-2">Disabled</span>
+        <% } %>
+
+      </h4>
+
+      <p><strong>Price:</strong> ₹<%= product.price %></p>
+      <p><strong>Brand:</strong> <%= product.brand %></p>
+      <p><strong>Category:</strong> <%= product.category %></p>
+      <p><strong>Gender:</strong> <%= product.gender %></p>
+      <p><strong>Material:</strong> <%= product.material %></p>
+      <p><strong>Description:</strong> <%= product.description %></p>
+
+      <!-- Back Button -->
+      <a href="/allproducts" class="btn btn-secondary mt-3">Back to All Products</a>
+    </div>
+  </div>
+</div>
