@@ -1,0 +1,148 @@
+.nav-link {
+  color: white !important;
+  transition: color 0.3s ease;
+}
+
+.nav-link.nav-hover:hover {
+  color: #ff8008 !important;
+}
+
+/* Filter Sidebar */
+.filter-sidebar {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.filter-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-group {
+  margin-bottom: 1rem;
+}
+
+.filter-group-title {
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Sort By Dropdown */
+.filter-sidebar label.form-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.filter-sidebar .form-select {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: border-color 0.3s ease;
+}
+
+.filter-sidebar .form-select:focus {
+  border-color: #ff8008;
+  box-shadow: 0 0 0 0.2rem rgba(255, 128, 8, 0.25);
+  outline: none;
+}
+
+/* Hover Icons Over Card */
+.card-hover-icons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .card-hover-icons {
+  opacity: 1;
+}
+
+.card-hover-icons i {
+  background-color: black;
+  color: white;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.cart-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cart-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Custom Breadcrumb */
+/* Colors */
+.text-orange {
+  color: #ff6600;
+}
+.bg-orange {
+  background-color: #ff6600;
+}
+
+/* Button Gradients */
+.mo-btn-gradient {
+  background: linear-gradient(90deg, #ff7a18, #ff6600);
+  color: white;
+  border: none;
+}
+.mo-btn-gradient:hover {
+  opacity: 0.9;
+}
+
+.mo-btn-outline {
+  border: 1px solid #ff6600;
+  color: #ff6600;
+  background-color: white;
+}
+.mo-btn-outline:hover {
+  background-color: #ff6600;
+  color: white;
+}
+
+/* Tabs */
+.mo-tab-btn {
+  color: #333;
+  border: none;
+  font-weight: 500;
+}
+.mo-tab-btn.active {
+  color: #ff6600;
+  border-bottom: 3px solid #ff6600;
+  background-color: #fdf2e9;
+}
+
+/* Order Card */
+.mo-order-card {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  background-color: #fff;
+}
+
+/* Sidebar */
+.mo-sidebar {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+}
+
+/* User Icon */
+.mo-user-icon {
+  color: #ff6600;
+}
