@@ -21,7 +21,7 @@ const UserAccount = () => {
 
     const fetchUser = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/profile`, {
+        const res = await axios.get(`https://walkora-footwear-e-commerce-website.onrender.com/api/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUser(res.data);
@@ -32,7 +32,7 @@ const UserAccount = () => {
 
     const fetchOrders = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/orders", {
+        const res = await axios.get("https://walkora-footwear-e-commerce-website.onrender.com/api/orders", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setOrders(res.data);
@@ -153,7 +153,7 @@ const UserAccount = () => {
                     {order.products.map((item, idx) => (
                       <div className="d-flex align-items-center mb-3" key={idx}>
                         <img
-                          src={`data:image/jpeg;base64,${item.productId.image}`}
+                          src={item.productId.image}
                           alt={item.productId.title}
                           width={80}
                           className="img-fluid me-3 rounded"

@@ -26,7 +26,7 @@ function Signup() {
       confirmPassword: confirmPassword
     };
 
-    axios.post('http://localhost:5000/api/signupapi', user)
+    axios.post('https://walkora-footwear-e-commerce-website.onrender.com/api/signupapi', user)
       .then(response => {
         setErrorMessage('');
         navigate('/login');  

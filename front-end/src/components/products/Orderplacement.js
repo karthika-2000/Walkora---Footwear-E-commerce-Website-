@@ -13,7 +13,7 @@ const Orderplacement = () => {
 
   const fetchCart = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/cart', {
+      const res = await axios.get('https://walkora-footwear-e-commerce-website.onrender.com/api/cart', {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       setCart(res.data);
@@ -36,7 +36,7 @@ const Orderplacement = () => {
       );
 
      await axios.post(
-  'http://localhost:5000/api/orders/place',
+  'https://walkora-footwear-e-commerce-website.onrender.com/api/orders/place',
   {
     products,
     totalAmount,
@@ -98,7 +98,7 @@ const Orderplacement = () => {
               <div className="card mb-3 shadow-sm border-0" key={idx}>
                 <div className="row g-0 align-items-center p-3">
                   <div className="col-md-2 position-relative">
-                   <img src={`data:image/jpeg;base64,${item.productId.image}`} alt={item.productId.title} className="img-fluid" />
+                   <img src={item.productId.image} alt={item.productId.title} className="img-fluid" />
 
                     <span className="badge bg-secondary position-absolute top-0 start-100 translate-middle">{item.quantity}</span>
                   </div>

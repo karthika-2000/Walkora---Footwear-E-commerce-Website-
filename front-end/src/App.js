@@ -17,7 +17,7 @@ function App() {
 
   const fetchCategoryProducts = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/cat/categories/landing');
+      const res = await axios.get('https://walkora-footwear-e-commerce-website.onrender.com/api/cat/categories/landing');
       setCategoryProducts(res.data);
     } catch (err) {
       console.error("Error fetching category products", err);
@@ -26,7 +26,7 @@ function App() {
 
   const fetchGenderProducts = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/trending/landing');
+      const res = await axios.get('https://walkora-footwear-e-commerce-website.onrender.com/api/trending/landing');
       setGenderProducts(res.data);
     } catch (err) {
       console.error("Error fetching gender products", err);
@@ -81,7 +81,7 @@ function App() {
                   width: "150px", height: "150px",
                   border: "3px solid black", transition: "transform 0.3s"
                 }}>
-                  <img src={`data:image/png;base64,${item.product.image}`} alt={item.category} className="w-100 h-100 object-fit-cover" />
+                  <img src={item.product.image} alt={item.category} className="w-100 h-100 object-fit-cover" />
                 </div>
                 <button className="btn btn-sm text-white px-4" style={{ background: "linear-gradient(to right, #ff8008, #ffc837)" }}>
                   {item.category}
@@ -99,7 +99,7 @@ function App() {
           {genderProducts.map((item, idx) => (
             <div className="col-md-4" key={idx}>
               <div className="trending-card" style={{
-                backgroundImage: `url('data:image/png;base64,${item.product.image}')`
+                backgroundImage: `url('${item.product.image}')`
               }}>
                 <div className="trending-overlay">
                   <h4 className="fw-bold">{item.gender.toUpperCase()}</h4>

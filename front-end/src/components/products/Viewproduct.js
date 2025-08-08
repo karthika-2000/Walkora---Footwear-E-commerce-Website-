@@ -20,7 +20,7 @@ function ViewProduct() {
 
     const fetchProduct = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/products/${id}`, {
+        const res = await axios.get(`https://walkora-footwear-e-commerce-website.onrender.com/api/products/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setProduct(res.data);
@@ -36,7 +36,7 @@ function ViewProduct() {
   const handleAddToCart = async (productId) => {
     try {
       await axios.post(
-        "http://localhost:5000/api/cart/add",
+        "https://walkora-footwear-e-commerce-website.onrender.com/api/cart/add",
         { productId, quantity: 1 },
         { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
       );
@@ -52,7 +52,7 @@ function ViewProduct() {
   const handleIncrease = async (productId) => {
     try {
       await axios.post(
-        "http://localhost:5000/api/cart/add",
+        "https://walkora-footwear-e-commerce-website.onrender.com/api/cart/add",
         { productId, quantity: 1 },
         { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
       );
@@ -73,7 +73,7 @@ function ViewProduct() {
     }
     try {
       await axios.post(
-        "http://localhost:5000/api/cart/add",
+        "https://walkora-footwear-e-commerce-website.onrender.com/api/cart/add",
         { productId, quantity: -1 },
         { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
       );
@@ -90,7 +90,7 @@ function ViewProduct() {
   const handleRemove = async (productId) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/cart/${productId}`,
+        `https://walkora-footwear-e-commerce-website.onrender.com/api/cart/${productId}`,
         { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
       );
 
@@ -136,7 +136,7 @@ function ViewProduct() {
         <div className="row">
           <div className="col-md-6 text-center">
             <img
-              src= {`data:image/jpeg;base64,${product.image}`}
+              src= {product.image}
               alt={product.title}
               className="img-fluid rounded"
             />

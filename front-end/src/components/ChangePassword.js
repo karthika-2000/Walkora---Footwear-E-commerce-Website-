@@ -20,7 +20,7 @@ const ChangePassword = () => {
 
     try {
       const res = await axios.post(
-        'http://localhost:5000/api/profile/changepassword',
+        'https://walkora-footwear-e-commerce-website.onrender.com/api/profile/changepassword',
         { currentPassword, newPassword, confirmPassword },
         { headers: { Authorization: `Bearer ${token}` } }
       );

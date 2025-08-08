@@ -37,9 +37,14 @@ const [showGoToCart, setShowGoToCart] = useState(false);
 
  const fetchProducts = async (page = 1) => {
   try {
-    const res = await axios.get(`http://localhost:5000/api/products/all?page=${page}&limit=9`, {
+    const res = await axios.get(`https://walkora-footwear-e-commerce-website.onrender.com/api/products/all?page=${page}&limit=9`, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
     });
+
+     res.data.products.forEach(product => {
+      console.log('Product Image URL:', product.image);
+    });
+
     setProducts(res.data.products || []);
     setTotalPages(res.data.totalPages);
     setCurrentPage(res.data.currentPage);
@@ -51,7 +56,7 @@ const [showGoToCart, setShowGoToCart] = useState(false);
 
   const fetchSearchResults = async (query) => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/products/search?q=${query}`, {
+      const res = await axios.get(`https://walkora-footwear-e-commerce-website.onrender.com/api/products/search?q=${query}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       setProducts(res.data || []);
@@ -62,7 +67,7 @@ const [showGoToCart, setShowGoToCart] = useState(false);
 
   const fetchGenderResults = async (gender) => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/products/search?gender=${gender}`, {
+      const res = await axios.get(`https://walkora-footwear-e-commerce-website.onrender.com/api/products/search?gender=${gender}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       setProducts(res.data || []);
@@ -73,7 +78,7 @@ const [showGoToCart, setShowGoToCart] = useState(false);
 
  const applyFilter = async () => {
   try {
-    const res = await axios.post("http://localhost:5000/api/products/filter", {
+    const res = await axios.post("https://walkora-footwear-e-commerce-website.onrender.com/api/products/filter", {
       ...filters,
       page: 1, // always start from page 1
       limit: 9
@@ -124,7 +129,7 @@ const [showGoToCart, setShowGoToCart] = useState(false);
 const handleAddToCart = async (productId) => {
   try {
     await axios.post(
-      "http://localhost:5000/api/cart/add",
+      "https://walkora-footwear-e-commerce-website.onrender.com/api/cart/add",
       { productId, quantity: 1 },
       { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
     );
@@ -144,7 +149,7 @@ const handleAddToCart = async (productId) => {
 const handleIncrease = async (productId) => {
   try {
     await axios.post(
-      "http://localhost:5000/api/cart/add",
+      "https://walkora-footwear-e-commerce-website.onrender.com/api/cart/add",
       { productId, quantity: 1 },
       { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
     );
@@ -165,7 +170,7 @@ const handleDecrease = async (productId) => {
   }
   try {
     await axios.post(
-      "http://localhost:5000/api/cart/add",
+      "https://walkora-footwear-e-commerce-website.onrender.com/api/cart/add",
       { productId, quantity: -1 },
       { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
     );
@@ -182,7 +187,7 @@ const handleDecrease = async (productId) => {
 const handleRemove = async (productId) => {
   try {
     await axios.delete(
-      `http://localhost:5000/api/cart/${productId}`,
+      `https://walkora-footwear-e-commerce-website.onrender.com/api/cart/${productId}`,
       { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
     );
 
@@ -326,7 +331,7 @@ const handleRemove = async (productId) => {
                   <div key={product._id} className="col-lg-4 col-md-6 col-sm-12">
                     <div className="card shadow-sm h-100">
                       <img
-                        src={`data:image/jpeg;base64,${product.image}`}
+                        src={product.image}
                         className="card-img-top img-fluid"
                         alt={product.title}
                         style={{ height: "250px", width: "300px", objectFit: "cover" }}

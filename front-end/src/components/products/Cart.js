@@ -10,7 +10,7 @@ const Cart = () => {
   useEffect(() => {
     const fetchCart = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/cart", {
+        const res = await axios.get("https://walkora-footwear-e-commerce-website.onrender.com/api/cart", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -32,7 +32,7 @@ const Cart = () => {
 
   const handleRemove = async (productId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/cart/${productId}`, {
+      await axios.delete(`https://walkora-footwear-e-commerce-website.onrender.com/api/cart/${productId}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -48,7 +48,7 @@ const Cart = () => {
 
   const handleClearCart = async () => {
     try {
-      await axios.delete("http://localhost:5000/api/cart/clear", {
+      await axios.delete("https://walkora-footwear-e-commerce-website.onrender.com/api/cart/clear", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setCart({ products: [] });
@@ -112,7 +112,7 @@ const Cart = () => {
                   <div className="row g-0 align-items-center p-3">
                     <div className="col-md-2">
                       {item.productId.image ? (
-                       <img src={`data:image/jpeg;base64,${item.productId.image}`} alt={item.productId.title} className="img-fluid rounded" />
+                       <img src={item.productId.image} alt={item.productId.title} className="img-fluid rounded" />
 
                       ) : (
                         <div className="text-muted small">No image available</div>
