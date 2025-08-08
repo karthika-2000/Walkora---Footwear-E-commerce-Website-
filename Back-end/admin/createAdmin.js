@@ -9,12 +9,14 @@ db.once('open', async () => {
   try {
     const existingAdmin = await User.findOne({ email: 'adminwalkora@gmail.com' });
 
+    const hashedPassword = await bcrypt.hash('123456789', 10);  // new password you want
+
     if (existingAdmin) {
-      console.log('⚠️ Admin already exists:', existingAdmin.email);
+      existingAdmin.password = hashedPassword;
+      await existingAdmin.save();
+      console.log('⚠️ Admin password updated:', existingAdmin.email);
       return process.exit(0);
     }
-
-    const hashedPassword = await bcrypt.hash('admin123', 10);
 
     const admin = new User({
       username: 'Admin',
@@ -26,10 +28,10 @@ db.once('open', async () => {
     });
 
     await admin.save();
-    console.log(' Admin created successfully:', admin.email);
+    console.log('Admin created successfully:', admin.email);
     process.exit(0);
   } catch (error) {
-    console.error('Error creating admin:', error);
+    console.error('Error creating/updating admin:', error);
     process.exit(1);
   }
 });

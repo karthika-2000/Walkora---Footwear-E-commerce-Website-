@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Products = require('../../models/productsModel');
 const multer = require('multer');
+const uploadBufferToCloudinary = require('../../utils/cloudinary');
 
 //  Multer config (store image in memory as buffer)
 const storage = multer.memoryStorage();
@@ -44,7 +45,7 @@ router.post('/add', upload.single('image'), async (req, res) => {
       gender,
       material,
       description,
-      image: req.file.buffer.toString('base64'),
+      image: await uploadBufferToCloudinary(req.file.buffer),
       active: true,
     });
 
@@ -93,7 +94,7 @@ router.post('/edit/:id', upload.single('image'), async (req, res) => {
     };
 
     if (req.file) {
-      updateFields.image = req.file.buffer.toString('base64');
+      updateFields.image = await uploadBufferToCloudinary(req.file.buffer);
     }
 
     await Products.findByIdAndUpdate(req.params.id, updateFields);
@@ -115,6 +116,8 @@ router.get('/view/:id', async (req, res) => {
     res.redirect('/allproducts?status=error');
   }
 });
+
+
 
 // GET - Delete Product
 router.get('/delete/:id', async (req, res) => {
