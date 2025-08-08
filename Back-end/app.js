@@ -27,9 +27,12 @@ var app = express();
 
 // Allow both live site and localhost for CORS
 const allowedOrigins = [
+const allowedOrigins = [
   'https://walkora-footwear-e-commerce-website.vercel.app',
-  'http://localhost:3000'
+  'http://localhost:3000',
+  'https://walkora-footwear-e-commerce-website.onrender.com'
 ];
+
 
 app.use(cors({
   origin: function(origin, callback) {
