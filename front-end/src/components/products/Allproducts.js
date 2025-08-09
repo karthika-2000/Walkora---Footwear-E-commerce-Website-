@@ -243,7 +243,7 @@ const handleRemove = async (productId) => {
             {[
               { type: "brand", options: ["Nike", "Adidas", "Puma", "Woodland", "Bata", "Reebok", "Mochi", "H&M", "Skechers", "Crocs", "Paragon"] },
               { type: "material", options: ["Leather", "Canvas", "Mesh", "Rubber", "Synthetic", "Suede", "Denim"] },
-              { type: "category", options: ["Men's Casual Shoes", "Men's Formal Shoes","Men's Sports Shoes", "Women's Flats & Sandals", "Women's Heels","Women's Sneakers", "Boys Footwear", "Girls Footwear", "Kids Footwear"] },
+              { type: "category", options: ["Men's Casual Shoes", "Men's Formal Shoes","Men's Sports Shoes", "Women's Flats & Sandals", "Women's Heels","Women's Sneakers", "Boys Footwear", "Girls Footwear", " Slippers & Flip-Flops"] },
               { type: "gender", options: ["men", "women", "kids"] },
             ].map(({ type, options }) => (
               <div className="filter-group" key={type}>
